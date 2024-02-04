@@ -1,0 +1,95 @@
+@media (min-width: 576px) {
+    .vid{
+        margin: 0% 4%;
+        width: 90vw;
+        height: 40vh;
+    }
+}
+
+@media (min-width: 992px) {
+
+
+    
+}
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    height: 100%;
+    width: 100%;
+
+}
+input{
+    width: 30vw;
+}
+
+.navbar{
+    padding: 0;
+    background: rgb(9, 53, 53);
+    justify-content: unset;
+}
+.navbar-brand{
+    color: green;
+}
+.nav-item{
+    margin: 1.5rem;
+    border: 2px solid black;
+}
+.nav-link{
+    color: orange;
+    padding: 0.7rem;
+
+}
+
+.vid{
+    padding: auto;
+    margin: 3% 12%;
+    width: 70vw;
+    height: 70vh;
+    
+}
+.menu-container{
+    margin: 5%;
+}
+
+
+.menu-item {
+
+    margin: 5%;
+    
+    display: inline-block;
+}
+
+
+.card {
+    width: 300px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.card-img-top {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.card-body {
+    padding: 15px;
+}
+
+.card-title {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.card-subtitle {
+    color: #007bff; /* Adjust the color as needed */
+    margin-bottom: 10px;
+}
+
+.card-text {
+    margin-bottom: 15px;
+}
