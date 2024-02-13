@@ -15,69 +15,54 @@ const menu = [
 ];
 
 const menuContainer = document.querySelector('.menu-container');
+const searchInput = document.querySelector('.search');
 
-function renderMenu(filter = "all") {
-  const menuContainer = document.querySelector('.menu-container');
+function renderMenu(filter = "all", searchQuery = "") {
   menuContainer.innerHTML = '';
 
-  menu.filter(item => filter === 'all' || item.category === filter).forEach(item => {
-          const menuItem = document.createElement('div');
-          menuItem.className = 'menu-item';
+  menu.filter(item => {
+    // Filter by category
+    const categoryMatch = filter === 'all' || item.category === filter;
+    // Filter by search query
+    const titleMatch = item.title.toLowerCase().includes(searchQuery.toLowerCase());
+    const descriptionMatch = item.description.toLowerCase().includes(searchQuery.toLowerCase());
+    
+    return categoryMatch && (titleMatch || descriptionMatch);
+  }).forEach(item => {
+    const menuItem = document.createElement('div');
+    menuItem.className = 'menu-item';
 
-          menuItem.innerHTML = `
-              <div class="card">
-                  <img src="${item.img}" class="card-img-top" alt="${item.title}">
-                  <div class="card-body">
-                      <h5 class="card-title">${item.title}</h5>
-                      <h6 class="card-subtitle mb-2 text-muted">${item.price}</h6>
-                      <p class="card-text">${item.description}</p>
-                      <p class="card-text"><small class="text-muted">Category: ${item.category}</small></p>
-                  </div>
-              </div>
-          `;
+    menuItem.innerHTML = `
+      <div class="card">
+        <img src="${item.img}" class="card-img-top" alt="${item.title}">
+        <div class="card-body">
+          <h5 class="card-title">${item.title}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">${item.price}</h6>
+          <p class="card-text">${item.description}</p>
+          <p class="card-text"><small class="text-muted">Category: ${item.category}</small></p>
+        </div>
+      </div>
+    `;
 
-          menuContainer.appendChild(menuItem);
-      });
-}
-/*
-function renderMenu() {
-  
-
-  menu.forEach(item => {
-      const menuItem = document.createElement('div');
-      menuItem.className = 'menu-item ';
-      menuItem.classList.add(item.category)
-      menuItem.classList.add('active')
-      menuItem.innerHTML = `
-          <div class="card">
-              <img src="${item.img}" class="card-img-top" alt="${item.title}">
-              <div class="card-body">
-                  <h5 class="card-title">${item.title}</h5>
-                  <h6 class="card-subtitle mb-2 text-muted">${item.price}</h6>
-                  <p class="card-text">${item.description}</p>
-                  <p class="card-text"><small class="text-muted">Category: ${item.category}</small></p>
-              </div>
-          </div>
-      `;
-
-      menuContainer.appendChild(menuItem);
+    menuContainer.appendChild(menuItem);
   });
 }
-*/
+
+searchInput.addEventListener('input', function() {
+  const searchQuery = this.value.trim();
+  renderMenu(document.querySelector('.nav-link.active').getAttribute('data-filter'), searchQuery);
+});
+
 const filterButtons = document.querySelectorAll('.nav-link');
-        filterButtons.forEach(button => {
-            button.addEventListener('click', function () {
-                const filter = this.getAttribute('data-filter');
-                renderMenu(filter);
-            });
-        });
+filterButtons.forEach(button => {
+  button.addEventListener('click', function () {
+    const filter = this.getAttribute('data-filter');
+    renderMenu(filter, searchInput.value.trim());
+  });
+});
+
 // Call the function to render the menu after the DOM is fully loaded
 renderMenu();
-
-
-
-
-
 
   
   
