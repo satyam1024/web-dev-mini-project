@@ -195,6 +195,9 @@ input {
     .navbar-toggler {
         margin-right: 2rem;
     }
+    .search {
+        width: 70vw
+    }
 
     .menu-container {
         display: grid;
@@ -266,6 +269,9 @@ input {
 
 
     }
+    .search {
+        width: 70vw
+    }
 
 
     .menu-item {
@@ -329,6 +335,9 @@ input {
 
 
     }
+    .search {
+        width: 70vw
+    }
 
 
     .menu-item {
@@ -382,6 +391,9 @@ input {
 
     .navbar-toggler {
         margin-right: 2rem;
+    }
+    .search {
+        width: 70vw
     }
 
     .menu-container {
